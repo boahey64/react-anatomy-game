@@ -93,56 +93,58 @@ function App() {
   return (
     <>
       <main>
-
         <section className="quiz-grid">
-              <div
-              >Advanced Anatomy
+          <div>Advanced Anatomy</div>
+
+          <button className="quiz-preview">
+            <a href="./selection/Knochen.jsx">
+              <div className="quiz-picture" data-keywords="Knochen">
+                <img
+                  className="thumbnail"
+                  src="thumbnails/FemurThumbnail.png"
+                  onContextMenu="return false;"
+                />
               </div>
+              <div className="quiz-info">Knochen</div>
+            </a>
+          </button>
 
-
-              <button className="quiz-preview">
-                <a href="./selection/KnochenAuswahl.php">
-                  <div className="quiz-picture" data-keywords="Knochen">
-                    <img className="thumbnail" src="thumbnails/FemurThumbnail.png" onContextMenu="return false;"/>
-                  </div>
-                  <div className="quiz-info">Knochen</div>
-                </a>
-              </button>
-
-              <button className="quiz-preview">
-                <a href="./selection/MuskelAuswahl.php">
-                  <div className="quiz-picture" data-keywords="Knochen">
-                    <img className="thumbnail" src="thumbnails/MuskelnThumbnail2.png" onContextMenu="return false;"/>
-                  </div>
-                  <div className="quiz-info">Muskeln</div>
-                </a>
-              </button>
-
+          <button className="quiz-preview">
+            <a href="./selection/Muskel.jsx">
+              <div className="quiz-picture" data-keywords="Knochen">
+                <img
+                  className="thumbnail"
+                  src="thumbnails/MuskelnThumbnail2.png"
+                  onContextMenu="return false;"
+                />
+              </div>
+              <div className="quiz-info">Muskeln</div>
+            </a>
+          </button>
         </section>
         {/*************************************************/}
 
         <div id={'game-container'}>
           <ol id="players" className={'highlight-player'}>
             <Player
-                initialName={PLAYERS.X}
-                symbol={'X'}
-                isActive={activePlayer === 'X'}
-                onChangeName={handlePlayerNameChange}
+              initialName={PLAYERS.X}
+              symbol={'X'}
+              isActive={activePlayer === 'X'}
+              onChangeName={handlePlayerNameChange}
             />
             <Player
-                initialName={PLAYERS.O}
-                symbol={'O'}
-                isActive={activePlayer === 'O'}
-                onChangeName={handlePlayerNameChange}
+              initialName={PLAYERS.O}
+              symbol={'O'}
+              isActive={activePlayer === 'O'}
+              onChangeName={handlePlayerNameChange}
             />
           </ol>
           {(winner || hasDraw) && (
-              <GameOver winner={winner} onRestart={handleRestart}/>
+            <GameOver winner={winner} onRestart={handleRestart} />
           )}
-          <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard}/>
+          <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
         </div>
-        <Log turns={gameTurns}/>
-
+        <Log turns={gameTurns} />
       </main>
       {/*<ReviewInput />*/}
     </>

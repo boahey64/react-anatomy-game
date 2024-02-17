@@ -5,9 +5,21 @@ const restartButton = document.getElementById('restartButton');
 
 let wordCount = 0;
 const correctWords = [
-  "Muskel", "Ursprung", "Ansatz", "Innervation", "Funktion",
-  "M. supraspinatus", "Fossa supraspinata", "Tuberculum majus", "N. suprascapularis", "Abduktion",
-  "M. infraspinatus", "Fossa infraspinata", "Tuberculum majus", "N. suprascapularis", "Adduktion, Außenrotation"
+  'Muskel',
+  'Ursprung',
+  'Ansatz',
+  'Innervation',
+  'Funktion',
+  'M. supraspinatus',
+  'Fossa supraspinata',
+  'Tuberculum majus',
+  'N. suprascapularis',
+  'Abduktion',
+  'M. infraspinatus',
+  'Fossa infraspinata',
+  'Tuberculum majus',
+  'N. suprascapularis',
+  'Adduktion, Außenrotation',
   // Weitere Wörter hier hinzufügen
 ];
 

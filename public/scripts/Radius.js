@@ -2,25 +2,28 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-  { word: "Corpus radii", abbreviations: [""] },
-  { word: "Caput radii", abbreviations: [""] },
-  { word: "Fovea articularis", abbreviations: [""] },
-  { word: "Circumferentia articularis", abbreviations: [""] },
-  { word: "Collum radii", abbreviations: [""] },
-  { word: "Tuberositas radii", abbreviations: [""] },
-  { word: "Margo interosseus", abbreviations: [""] },
-  { word: "Facies anterior", abbreviations: [""] },
-  { word: "Margo anterior", abbreviations: [""] },
-  { word: "Facies lateralis", abbreviations: [""] },
-  { word: "Margo posterior", abbreviations: [""] },
-  { word: "Facies posterior", abbreviations: [""] },
-  { word: "Tuberositas pronatoria", abbreviations: [""] },
-  { word: "Processus styloideus", abbreviations: ["Proc styloideus", "Proc. styloideus"] },
-  { word: "Incisura ulnaris", abbreviations: [""] },
-  { word: "Facies articularis carpalis", abbreviations: [""] },
-  { word: "Tuberculum dorsale", abbreviations: [""] },
-  { word: "Extremitas proximalis", abbreviations: [""] },
-  { word: "Extremitas distalis", abbreviations: [""] }
+  { word: 'Corpus radii', abbreviations: [''] },
+  { word: 'Caput radii', abbreviations: [''] },
+  { word: 'Fovea articularis', abbreviations: [''] },
+  { word: 'Circumferentia articularis', abbreviations: [''] },
+  { word: 'Collum radii', abbreviations: [''] },
+  { word: 'Tuberositas radii', abbreviations: [''] },
+  { word: 'Margo interosseus', abbreviations: [''] },
+  { word: 'Facies anterior', abbreviations: [''] },
+  { word: 'Margo anterior', abbreviations: [''] },
+  { word: 'Facies lateralis', abbreviations: [''] },
+  { word: 'Margo posterior', abbreviations: [''] },
+  { word: 'Facies posterior', abbreviations: [''] },
+  { word: 'Tuberositas pronatoria', abbreviations: [''] },
+  {
+    word: 'Processus styloideus',
+    abbreviations: ['Proc styloideus', 'Proc. styloideus'],
+  },
+  { word: 'Incisura ulnaris', abbreviations: [''] },
+  { word: 'Facies articularis carpalis', abbreviations: [''] },
+  { word: 'Tuberculum dorsale', abbreviations: [''] },
+  { word: 'Extremitas proximalis', abbreviations: [''] },
+  { word: 'Extremitas distalis', abbreviations: [''] },
   // Add more answers
 ];
 let countEntries = answers.length; // Anzahl der Einträge im Array
@@ -70,14 +73,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -90,7 +100,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -98,7 +108,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -110,7 +119,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 
@@ -127,6 +138,3 @@ function stopQuiz() {
 restartButton.style.display = 'none';
 
 // Rufe die startCountdown-Funktion auf, um den Timer zu starten, wenn die Eingabe beginnt
-
-
-

@@ -2,27 +2,27 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-/*1*/ { word: "Phalanx distalis", abbreviations: [""] },
-/*2*/ { word: "Tuberositas phalangis distalis", abbreviations: [""] },
-/*3*/ { word: "Phalanx media", abbreviations: [""] },
-/*4*/ { word: "Phalanx proximalis", abbreviations: [""] },
-/*5*/ { word: "Ossa digitorum", abbreviations: [""] },
-/*6*/ { word: "Caput", abbreviations: [""] },
-/*7*/ { word: "Corpus", abbreviations: [""] },
-/*8*/ { word: "Ossa metacarpalia", abbreviations: [""] },
-/*9*/ { word: "Basis", abbreviations: [""] },
-/*10*/ { word: "Os sesamoideum", abbreviations: ["Ossa sesamoidea"] },
-/*11*/ { word: "Os hamatum", abbreviations: [""] },
-/*12*/ { word: "Hamulus ossis hamati", abbreviations: [""] },
-/*13*/ { word: "Os capitatum", abbreviations: [""] },
-/*14*/ { word: "Os trapezoideum", abbreviations: [""] },
-/*15*/ { word: "Os trapezium", abbreviations: [""] },
-/*16*/ { word: "Tuberculum ossis trapezii", abbreviations: [""] },
-/*17*/ { word: "Os pisiforme", abbreviations: [""] },
-/*18*/ { word: "Os triquetrum", abbreviations: [""] },
-/*19*/ { word: "Os lunatum", abbreviations: [""] },
-/*20*/ { word: "Os scaphoideum", abbreviations: [""] },
-/*21*/ { word: "Pollex", abbreviations: [""] }
+  /*1*/ { word: 'Phalanx distalis', abbreviations: [''] },
+  /*2*/ { word: 'Tuberositas phalangis distalis', abbreviations: [''] },
+  /*3*/ { word: 'Phalanx media', abbreviations: [''] },
+  /*4*/ { word: 'Phalanx proximalis', abbreviations: [''] },
+  /*5*/ { word: 'Ossa digitorum', abbreviations: [''] },
+  /*6*/ { word: 'Caput', abbreviations: [''] },
+  /*7*/ { word: 'Corpus', abbreviations: [''] },
+  /*8*/ { word: 'Ossa metacarpalia', abbreviations: [''] },
+  /*9*/ { word: 'Basis', abbreviations: [''] },
+  /*10*/ { word: 'Os sesamoideum', abbreviations: ['Ossa sesamoidea'] },
+  /*11*/ { word: 'Os hamatum', abbreviations: [''] },
+  /*12*/ { word: 'Hamulus ossis hamati', abbreviations: [''] },
+  /*13*/ { word: 'Os capitatum', abbreviations: [''] },
+  /*14*/ { word: 'Os trapezoideum', abbreviations: [''] },
+  /*15*/ { word: 'Os trapezium', abbreviations: [''] },
+  /*16*/ { word: 'Tuberculum ossis trapezii', abbreviations: [''] },
+  /*17*/ { word: 'Os pisiforme', abbreviations: [''] },
+  /*18*/ { word: 'Os triquetrum', abbreviations: [''] },
+  /*19*/ { word: 'Os lunatum', abbreviations: [''] },
+  /*20*/ { word: 'Os scaphoideum', abbreviations: [''] },
+  /*21*/ { word: 'Pollex', abbreviations: [''] },
 ];
 let countEntries = answers.length; // Anzahl der Einträge im Array
 let multipliedCount = countEntries * 20; // Multipliziert die Anzahl der Einträge mit 20
@@ -71,14 +71,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -91,7 +98,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -99,7 +106,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -111,7 +117,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 

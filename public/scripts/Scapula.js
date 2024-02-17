@@ -2,24 +2,27 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-  { word: "Margo medialis", abbreviations: [""] },
-  { word: "Margo lateralis", abbreviations: [""] },
-  { word: "Margo superior", abbreviations: [""] },
-  { word: "Angulus superior", abbreviations: [""] },
-  { word: "Angulus inferior", abbreviations: [""] },
-  { word: "Angulus lateralis", abbreviations: [""] },
-  { word: "Spina scapulae", abbreviations: [""] },
-  { word: "Fossa supraspinata", abbreviations: [""] },
-  { word: "Fossa infraspinata", abbreviations: [""] },
-  { word: "Acromion", abbreviations: [""] },
-  { word: "Facies articularis", abbreviations: [""] },
-  { word: "Angulus acromii", abbreviations: [""] },
-  { word: "Incisura scapulae", abbreviations: [""] },
-  { word: "Processus coracoideus", abbreviations: ["Proc coracoideus", "Proc. coracoideus"] },
-  { word: "Collum scapulae", abbreviations: [""] },
-  { word: "Cavitas glenoidalis", abbreviations: [""] },
-  { word: "Tuberculum supraglenoidale", abbreviations: [""] },
-  { word: "Tuberculum infraglenoidale", abbreviations: [""] }
+  { word: 'Margo medialis', abbreviations: [''] },
+  { word: 'Margo lateralis', abbreviations: [''] },
+  { word: 'Margo superior', abbreviations: [''] },
+  { word: 'Angulus superior', abbreviations: [''] },
+  { word: 'Angulus inferior', abbreviations: [''] },
+  { word: 'Angulus lateralis', abbreviations: [''] },
+  { word: 'Spina scapulae', abbreviations: [''] },
+  { word: 'Fossa supraspinata', abbreviations: [''] },
+  { word: 'Fossa infraspinata', abbreviations: [''] },
+  { word: 'Acromion', abbreviations: [''] },
+  { word: 'Facies articularis', abbreviations: [''] },
+  { word: 'Angulus acromii', abbreviations: [''] },
+  { word: 'Incisura scapulae', abbreviations: [''] },
+  {
+    word: 'Processus coracoideus',
+    abbreviations: ['Proc coracoideus', 'Proc. coracoideus'],
+  },
+  { word: 'Collum scapulae', abbreviations: [''] },
+  { word: 'Cavitas glenoidalis', abbreviations: [''] },
+  { word: 'Tuberculum supraglenoidale', abbreviations: [''] },
+  { word: 'Tuberculum infraglenoidale', abbreviations: [''] },
   // Add more answers
 ];
 let timeRemaining = 200; // Ändere dies auf deine gewünschte Zeit
@@ -64,14 +67,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -84,7 +94,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -92,7 +102,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -104,7 +113,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 

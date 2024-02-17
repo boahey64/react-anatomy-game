@@ -2,17 +2,26 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-  { word: "Arcus anterior", abbreviations: ["Arcus ant"] },
-  { word: "Arcus posterior", abbreviations: ["Arcus post"] },
-  { word: "Tuberculum anterius", abbreviations: [""] },
-  { word: "Tuberculum posterius", abbreviations: [""] },
-  { word: "Processus transversus", abbreviations: ["Proc transversus", "Proc. transversus"] },
-  { word: "Foramen transversarium", abbreviations: [""] },
-  { word: "Facies articularis superior", abbreviations: ["Facies articularis sup"] },
-  { word: "Foramen vertebrale", abbreviations: [""] },
-  { word: "Massae laterales", abbreviations: [""] },
-  { word: "Fovea dentis", abbreviations: [""] },
-  { word: "Sulcus arteriae vertebralis", abbreviations: ["Sulcus a vertebralis", "Sulcus a. vertebralis"] },
+  { word: 'Arcus anterior', abbreviations: ['Arcus ant'] },
+  { word: 'Arcus posterior', abbreviations: ['Arcus post'] },
+  { word: 'Tuberculum anterius', abbreviations: [''] },
+  { word: 'Tuberculum posterius', abbreviations: [''] },
+  {
+    word: 'Processus transversus',
+    abbreviations: ['Proc transversus', 'Proc. transversus'],
+  },
+  { word: 'Foramen transversarium', abbreviations: [''] },
+  {
+    word: 'Facies articularis superior',
+    abbreviations: ['Facies articularis sup'],
+  },
+  { word: 'Foramen vertebrale', abbreviations: [''] },
+  { word: 'Massae laterales', abbreviations: [''] },
+  { word: 'Fovea dentis', abbreviations: [''] },
+  {
+    word: 'Sulcus arteriae vertebralis',
+    abbreviations: ['Sulcus a vertebralis', 'Sulcus a. vertebralis'],
+  },
   // Add more answers
 ];
 let countEntries = answers.length; // Anzahl der Einträge im Array
@@ -62,14 +71,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -82,7 +98,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -90,7 +106,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -102,7 +117,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 
@@ -119,7 +136,7 @@ function stopQuiz() {
   let greenCount = 0;
   let redCount = 0;
 
-  answers.forEach(answer => {
+  answers.forEach((answer) => {
     if (answer.found) {
       greenCount++;
     } else {
@@ -137,5 +154,3 @@ function stopQuiz() {
 restartButton.style.display = 'none';
 
 // Rufe die startCountdown-Funktion auf, um den Timer zu starten, wenn die Eingabe beginnt
-
-

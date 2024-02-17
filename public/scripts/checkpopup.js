@@ -1,4 +1,3 @@
-
 function checkCookiesAndLoad() {
   if (getCookie('cookieAccepted')) {
     loadGoogleAnalytics();
@@ -33,7 +32,9 @@ function loadGoogleAnalytics() {
     document.head.appendChild(gaScript);
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() {
+      dataLayer.push(arguments);
+    }
     gtag('js', new Date());
     gtag('config', 'G-MD769R1DSS'); // Ersetze DEINE_ANALYTICS_ID durch deine eigene Tracking-ID
   }
@@ -58,13 +59,12 @@ function setCookie(name, value, days) {
   var expires = '';
   if (days) {
     var date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     expires = '; expires=' + date.toUTCString();
   }
   document.cookie = name + '=' + value + expires + '; path=/';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   checkCookiesAndLoad();
 });
-

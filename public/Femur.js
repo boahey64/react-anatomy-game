@@ -2,35 +2,35 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-  { word: "Tuberculum adductorium", abbreviations: [""] },
-  { word: "Trochanter major", abbreviations: [""] },
-  { word: "Facies anterior", abbreviations: [""] },
-  { word: "Caput femoris", abbreviations: [""] },
-  { word: "Linea intertrochanterica", abbreviations: [""] },
-  { word: "Facies patellaris", abbreviations: [""] },
-  { word: "Epicondylus medialis", abbreviations: [""] },
-  { word: "Corpus femoris", abbreviations: [""] },
-  { word: "Collum femoris", abbreviations: [""] },
-  { word: "Trochanter minor", abbreviations: [""] },
-  { word: "Epicondylus lateralis", abbreviations: [""] },
-  { word: "Sulcus popliteus", abbreviations: [""] },
-  { word: "Fossa trochanterica", abbreviations: [""] },
-  { word: "Tuberositas glutea", abbreviations: [""] },
-  { word: "Linea pectinea", abbreviations: [""] },
-  { word: "Linea aspera", abbreviations: [""] },
-  { word: "Labium laterale", abbreviations: [""] },
-  { word: "Labium mediale", abbreviations: [""] },
-  { word: "Condylus medialis", abbreviations: [""] },
-  { word: "Facies lateralis", abbreviations: [""] },
-  { word: "Facies medialis", abbreviations: [""] },
-  { word: "Facies poplitea", abbreviations: [""] },
-  { word: "Linea intercondylaris", abbreviations: [""] },
-  { word: "Condylus lateralis", abbreviations: [""] },
-  { word: "Fossa intercondylaris", abbreviations: [""] },
-  { word: "Fovea capitis", abbreviations: [""] },
-  { word: "Tuberculum quadratum", abbreviations: [""] },
-  { word: "Christa intertrochanterica", abbreviations: [""] },
-  { word: "Labium mediale", abbreviations: [""] }
+  { word: 'Tuberculum adductorium', abbreviations: [''] },
+  { word: 'Trochanter major', abbreviations: [''] },
+  { word: 'Facies anterior', abbreviations: [''] },
+  { word: 'Caput femoris', abbreviations: [''] },
+  { word: 'Linea intertrochanterica', abbreviations: [''] },
+  { word: 'Facies patellaris', abbreviations: [''] },
+  { word: 'Epicondylus medialis', abbreviations: [''] },
+  { word: 'Corpus femoris', abbreviations: [''] },
+  { word: 'Collum femoris', abbreviations: [''] },
+  { word: 'Trochanter minor', abbreviations: [''] },
+  { word: 'Epicondylus lateralis', abbreviations: [''] },
+  { word: 'Sulcus popliteus', abbreviations: [''] },
+  { word: 'Fossa trochanterica', abbreviations: [''] },
+  { word: 'Tuberositas glutea', abbreviations: [''] },
+  { word: 'Linea pectinea', abbreviations: [''] },
+  { word: 'Linea aspera', abbreviations: [''] },
+  { word: 'Labium laterale', abbreviations: [''] },
+  { word: 'Labium mediale', abbreviations: [''] },
+  { word: 'Condylus medialis', abbreviations: [''] },
+  { word: 'Facies lateralis', abbreviations: [''] },
+  { word: 'Facies medialis', abbreviations: [''] },
+  { word: 'Facies poplitea', abbreviations: [''] },
+  { word: 'Linea intercondylaris', abbreviations: [''] },
+  { word: 'Condylus lateralis', abbreviations: [''] },
+  { word: 'Fossa intercondylaris', abbreviations: [''] },
+  { word: 'Fovea capitis', abbreviations: [''] },
+  { word: 'Tuberculum quadratum', abbreviations: [''] },
+  { word: 'Christa intertrochanterica', abbreviations: [''] },
+  { word: 'Labium mediale', abbreviations: [''] },
   // Add more answers
 ];
 let countEntries = answers.length; // Anzahl der Einträge im Array
@@ -80,14 +80,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -100,7 +107,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -108,7 +115,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -120,7 +126,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 

@@ -2,26 +2,35 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-  { word: "Tuberositas deltoideae", abbreviations: [""] },
-  { word: "Tuberculum majus", abbreviations: [""] },
-  { word: "Crista tuberculi majoris", abbreviations: [""] },
-  { word: "Tuberculum minus", abbreviations: [""] },
-  { word: "Collum chirurgicum", abbreviations: [""] },
-  { word: "Facies antero-medialis", abbreviations: ["Facies anteromedialis","Facies antero medialis"] },
-  { word: "Margo medialis", abbreviations: [""] },
-  { word: "Caput humeri", abbreviations: [""] },
-  { word: "Sulcus intertubercularis", abbreviations: [""] },
-  { word: "Collum anatomicum", abbreviations: [""] },
-  { word: "Margo lateralis", abbreviations: [""] },
-  { word: "Facies antero-lateralis", abbreviations: ["Facies antero lateralis","Facies anterolateralis"] },
-  { word: "Epicondylus lateralis", abbreviations: [""] },
-  { word: "Fossa radialis", abbreviations: [""] },
-  { word: "Epicondylus medialis", abbreviations: [""] },
-  { word: "Fossa coronoidea", abbreviations: [""] },
-  { word: "Trochlea humeri", abbreviations: [""] },
-  { word: "Capitulum humeri", abbreviations: [""] },
-  { word: "Sulcus nervi radialis", abbreviations: ["Sulcus n radialis", "Sulcus n. radialis"] },
-  { word: "Fossa olecrani", abbreviations: [""] }
+  { word: 'Tuberositas deltoideae', abbreviations: [''] },
+  { word: 'Tuberculum majus', abbreviations: [''] },
+  { word: 'Crista tuberculi majoris', abbreviations: [''] },
+  { word: 'Tuberculum minus', abbreviations: [''] },
+  { word: 'Collum chirurgicum', abbreviations: [''] },
+  {
+    word: 'Facies antero-medialis',
+    abbreviations: ['Facies anteromedialis', 'Facies antero medialis'],
+  },
+  { word: 'Margo medialis', abbreviations: [''] },
+  { word: 'Caput humeri', abbreviations: [''] },
+  { word: 'Sulcus intertubercularis', abbreviations: [''] },
+  { word: 'Collum anatomicum', abbreviations: [''] },
+  { word: 'Margo lateralis', abbreviations: [''] },
+  {
+    word: 'Facies antero-lateralis',
+    abbreviations: ['Facies antero lateralis', 'Facies anterolateralis'],
+  },
+  { word: 'Epicondylus lateralis', abbreviations: [''] },
+  { word: 'Fossa radialis', abbreviations: [''] },
+  { word: 'Epicondylus medialis', abbreviations: [''] },
+  { word: 'Fossa coronoidea', abbreviations: [''] },
+  { word: 'Trochlea humeri', abbreviations: [''] },
+  { word: 'Capitulum humeri', abbreviations: [''] },
+  {
+    word: 'Sulcus nervi radialis',
+    abbreviations: ['Sulcus n radialis', 'Sulcus n. radialis'],
+  },
+  { word: 'Fossa olecrani', abbreviations: [''] },
   // Add more answers
 ];
 let countEntries = answers.length; // Anzahl der Einträge im Array
@@ -71,14 +80,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -91,7 +107,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -99,7 +115,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -111,7 +126,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 
@@ -128,6 +145,3 @@ function stopQuiz() {
 restartButton.style.display = 'none';
 
 // Rufe die startCountdown-Funktion auf, um den Timer zu starten, wenn die Eingabe beginnt
-
-
-

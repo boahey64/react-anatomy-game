@@ -2,16 +2,44 @@ const searchInput = document.getElementById('textInput');
 const stopButton = document.getElementById('stopButton');
 const restartButton = document.getElementById('restartButton'); // Add a Restart button
 const answers = [
-  { word: "Corpus vertebrae", abbreviations: [""] },
-  { word: "Lamina arcus vertebrae", abbreviations: [""] },
-  { word: "Pediculus arcus vertebrae", abbreviations: [""] },
-  { word: "Processus spinosus", abbreviations: ["Proc spinosus", "Proc. spinosus"] },
-  { word: "Processus costalis", abbreviations: ["Proc costalis", "Proc. costalis"] },
-  { word: "Processus accessorius", abbreviations: ["Proc accessorius", "Proc. accessorius"] },
-  { word: "Processus mammillaris", abbreviations: ["Proc mammillaris", "Proc. mammillaris"] },
-  { word: "Foramen vertebrale", abbreviations: [""] },
-  { word: "Processus articularis superior", abbreviations: ["Proc articularis superior", "Proc. articularis superior", "Proc. articularis sup", "Proc articularis sup"] },
-  { word: "Processus articularis inferior", abbreviations: ["Proc articularis inferior", "Proc. articularis inferior", "Proc. articularis inf", "Proc articularis inf"] }
+  { word: 'Corpus vertebrae', abbreviations: [''] },
+  { word: 'Lamina arcus vertebrae', abbreviations: [''] },
+  { word: 'Pediculus arcus vertebrae', abbreviations: [''] },
+  {
+    word: 'Processus spinosus',
+    abbreviations: ['Proc spinosus', 'Proc. spinosus'],
+  },
+  {
+    word: 'Processus costalis',
+    abbreviations: ['Proc costalis', 'Proc. costalis'],
+  },
+  {
+    word: 'Processus accessorius',
+    abbreviations: ['Proc accessorius', 'Proc. accessorius'],
+  },
+  {
+    word: 'Processus mammillaris',
+    abbreviations: ['Proc mammillaris', 'Proc. mammillaris'],
+  },
+  { word: 'Foramen vertebrale', abbreviations: [''] },
+  {
+    word: 'Processus articularis superior',
+    abbreviations: [
+      'Proc articularis superior',
+      'Proc. articularis superior',
+      'Proc. articularis sup',
+      'Proc articularis sup',
+    ],
+  },
+  {
+    word: 'Processus articularis inferior',
+    abbreviations: [
+      'Proc articularis inferior',
+      'Proc. articularis inferior',
+      'Proc. articularis inf',
+      'Proc articularis inf',
+    ],
+  },
   // Add more answers
 ];
 let countEntries = answers.length; // Anzahl der Einträge im Array
@@ -61,14 +89,21 @@ searchInput.addEventListener('input', () => {
   answers.forEach((answer, index) => {
     const word = answer.word;
     const lowerCaseWord = word.toLowerCase();
-    const abbreviations = answer.abbreviations.map(abbr => abbr.toLowerCase());
+    const abbreviations = answer.abbreviations.map((abbr) =>
+      abbr.toLowerCase(),
+    );
 
-    if (!answers[index].found && (lowerCaseWord === input || abbreviations.includes(input))) {
+    if (
+      !answers[index].found &&
+      (lowerCaseWord === input || abbreviations.includes(input))
+    ) {
       searchInput.value = '';
-      document.getElementById(`${index + 1}`).innerHTML = `${index + 1}  ${word}`;
+      document.getElementById(`${index + 1}`).innerHTML = `${
+        index + 1
+      }  ${word}`;
       answers[index] = { ...answers[index], found: true };
 
-      if (answers.every(item => item.found)) {
+      if (answers.every((item) => item.found)) {
         allWordsFound = true;
         const gratulation = document.querySelector('.gratulation');
         gratulation.style.display = 'block';
@@ -81,7 +116,7 @@ searchInput.addEventListener('input', () => {
       const divs = document.querySelectorAll('.label');
 
       // Iteriere durch alle Labels und entferne das Fettdruck-Styling
-      divs.forEach(div => {
+      divs.forEach((div) => {
         if (div.textContent === answerLabel) {
           div.style.fontWeight = 'normal'; // Setze auf 'normal', um das Fettdruck-Styling zu entfernen
         }
@@ -89,7 +124,6 @@ searchInput.addEventListener('input', () => {
     }
   });
 });
-
 
 stopButton.addEventListener('click', stopQuiz);
 restartButton.addEventListener('click', () => {
@@ -101,7 +135,9 @@ function stopQuiz() {
   answers.forEach((answer, index) => {
     if (!answer.found) {
       const answerElement = document.getElementById(`${index + 1}`);
-      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${answer.word}</span>`;
+      answerElement.innerHTML = `<span style="color: red">${index + 1}  ${
+        answer.word
+      }</span>`;
     }
   });
 
@@ -118,6 +154,3 @@ function stopQuiz() {
 restartButton.style.display = 'none';
 
 // Rufe die startCountdown-Funktion auf, um den Timer zu starten, wenn die Eingabe beginnt
-
-
-
