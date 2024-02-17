@@ -114,16 +114,6 @@ function App() {
           <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
         </div>
         <Log turns={gameTurns} />
-        <div>
-          <input ref={inputRef} />
-          <button
-            onClick={() => {
-              inputRef.current.focus();
-            }}
-          >
-            Focus input
-          </button>
-        </div>
       </main>
       {/*<ReviewInput />*/}
     </>
