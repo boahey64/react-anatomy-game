@@ -1,10 +1,10 @@
 import Player from './components/Player/Player.jsx';
-import ReviewInput from './components/Review/ReviewInput.jsx';
 import GameBoard from './components/GameBoard/GameBoard';
 import { useRef, useState } from 'react';
 import Log from './components/Log';
 import { WINNING_COMBINATIONS } from './winning-combinations.js';
 import GameOver from './components/GameOver.jsx';
+import './assets/styles/quizGrid.css';
 
 const PLAYERS = { X: 'Player 1', O: 'Player 2' };
 
@@ -93,27 +93,56 @@ function App() {
   return (
     <>
       <main>
+
+        <section className="quiz-grid">
+              <div
+              >Advanced Anatomy
+              </div>
+
+
+              <button className="quiz-preview">
+                <a href="./selection/KnochenAuswahl.php">
+                  <div className="quiz-picture" data-keywords="Knochen">
+                    <img className="thumbnail" src="thumbnails/FemurThumbnail.png" onContextMenu="return false;"/>
+                  </div>
+                  <div className="quiz-info">Knochen</div>
+                </a>
+              </button>
+
+              <button className="quiz-preview">
+                <a href="./selection/MuskelAuswahl.php">
+                  <div className="quiz-picture" data-keywords="Knochen">
+                    <img className="thumbnail" src="thumbnails/MuskelnThumbnail2.png" onContextMenu="return false;"/>
+                  </div>
+                  <div className="quiz-info">Muskeln</div>
+                </a>
+              </button>
+
+        </section>
+        {/*************************************************/}
+
         <div id={'game-container'}>
           <ol id="players" className={'highlight-player'}>
             <Player
-              initialName={PLAYERS.X}
-              symbol={'X'}
-              isActive={activePlayer === 'X'}
-              onChangeName={handlePlayerNameChange}
+                initialName={PLAYERS.X}
+                symbol={'X'}
+                isActive={activePlayer === 'X'}
+                onChangeName={handlePlayerNameChange}
             />
             <Player
-              initialName={PLAYERS.O}
-              symbol={'O'}
-              isActive={activePlayer === 'O'}
-              onChangeName={handlePlayerNameChange}
+                initialName={PLAYERS.O}
+                symbol={'O'}
+                isActive={activePlayer === 'O'}
+                onChangeName={handlePlayerNameChange}
             />
           </ol>
           {(winner || hasDraw) && (
-            <GameOver winner={winner} onRestart={handleRestart} />
+              <GameOver winner={winner} onRestart={handleRestart}/>
           )}
-          <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
+          <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard}/>
         </div>
-        <Log turns={gameTurns} />
+        <Log turns={gameTurns}/>
+
       </main>
       {/*<ReviewInput />*/}
     </>
