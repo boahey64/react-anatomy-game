@@ -5,6 +5,9 @@ import Log from './components/Log';
 import { WINNING_COMBINATIONS } from './winning-combinations.js';
 import GameOver from './components/GameOver.jsx';
 import './assets/styles/quizGrid.css';
+import { Route, Routes, useNavigate } from 'react-router';
+import Knochen from './selection/Knochen.jsx';
+import Muskel from './selection/Muskel.jsx';
 
 const PLAYERS = { X: 'Player 1', O: 'Player 2' };
 
@@ -68,6 +71,8 @@ function App() {
 
   const hasDraw = gameTurns.length === 9 && !winner;
 
+  // const navigate = useNavigate();
+
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
       const currentPlayer = deriveActivePlayer(prevTurns);
@@ -94,42 +99,63 @@ function App() {
     <>
       <main>
         <section className="quiz-grid">
-          <div>Advanced Anatomy</div>
+          <h1>Advanced Anatomy</h1>
 
-          <button className="quiz-preview">
-            <a href="./selection/Knochen.jsx">
-              <div className="quiz-picture" data-keywords="Knochen">
-                <img
-                  className="thumbnail"
+          {/*<Routes>*/}
+          {/*  <Route path="/quiz/bones" element={<Knochen />} />*/}
+          {/*  <Route path="/quiz/muscles" element={<Muskel />} />*/}
+          {/*</Routes>*/}
+
+          <div className="quiz-preview">
+            <div className="quiz-picture" data-keywords="Knochen">
+              <img
                   src="thumbnails/FemurThumbnail.png"
-                  onContextMenu="return false;"
-                />
-              </div>
-              <div className="quiz-info">Knochen</div>
-            </a>
-          </button>
-
-          <button className="quiz-preview">
-            <a href="./selection/Muskel.jsx">
-              <div className="quiz-picture" data-keywords="Knochen">
-                <img
-                  className="thumbnail"
+                  alt="Hand drawn tic tac toe game board"
+              />
+            </div>
+          </div>
+          <div className="quiz-preview">
+            <div className="quiz-picture" data-keywords="Knochen">
+              <img
                   src="thumbnails/MuskelnThumbnail2.png"
-                  onContextMenu="return false;"
-                />
-              </div>
-              <div className="quiz-info">Muskeln</div>
-            </a>
-          </button>
+                  alt="Hand drawn tic tac toe game board"
+              />
+            </div>
+          </div>
+          {/*<button className="quiz-preview">*/}
+          {/*  <a href="./selection/Knochen.jsx">*/}
+          {/*    <div className="quiz-picture" data-keywords="Knochen">*/}
+          {/*      <img*/}
+          {/*          className="thumbnail"*/}
+          {/*          src="thumbnails/FemurThumbnail.png"*/}
+          {/*          onContextMenu="return false;"*/}
+          {/*      />*/}
+          {/*    </div>*/}
+          {/*    <div className="quiz-info">Knochen</div>*/}
+          {/*  </a>*/}
+          {/*</button>*/}
+
+          {/*  <button className="quiz-preview">*/}
+          {/*    <a href="./selection/Muskel.jsx">*/}
+          {/*      <div className="quiz-picture" data-keywords="Knochen">*/}
+          {/*        <img*/}
+          {/*          className="thumbnail"*/}
+          {/*          src="thumbnails/MuskelnThumbnail2.png"*/}
+          {/*          onContextMenu="return false;"*/}
+          {/*        />*/}
+          {/*      </div>*/}
+          {/*      <div className="quiz-info">Muskeln</div>*/}
+          {/*    </a>*/}
+          {/*  </button>*/}
         </section>
         {/*************************************************/}
 
         <div id={'game-container'}>
           <ol id="players" className={'highlight-player'}>
             <Player
-              initialName={PLAYERS.X}
-              symbol={'X'}
-              isActive={activePlayer === 'X'}
+                initialName={PLAYERS.X}
+                symbol={'X'}
+                isActive={activePlayer === 'X'}
               onChangeName={handlePlayerNameChange}
             />
             <Player

@@ -1,3 +1,3 @@
 export default function Muskel({ winner, onRestart }) {
-    return <div>Muskel</div>;
+  return <div>Muskel</div>;
 }
