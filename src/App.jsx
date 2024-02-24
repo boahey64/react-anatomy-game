@@ -8,14 +8,14 @@ import './assets/styles/quizGrid.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import BonesPage from './pages/BonesPage.jsx';
 import MusclesPage from './pages/MusclesPage.jsx';
-import HomePage from "./pages/HomePage.jsx";
-import TicTacToePage from "./pages/TicTacToePage.jsx";
+import HomePage from './pages/HomePage.jsx';
+import TicTacToePage from './pages/TicTacToePage.jsx';
 
 const router = createBrowserRouter([
-  { path: '/',  element: <HomePage />},
-  { path: '/tictactoe',  element: <TicTacToePage /> },
-  { path: '/muscles',  element: <MusclesPage /> },
-  { path: '/bones',  element: <BonesPage /> },
+  { path: '/', element: <HomePage /> },
+  { path: '/tictactoe', element: <TicTacToePage /> },
+  { path: '/muscles', element: <MusclesPage /> },
+  { path: '/bones', element: <BonesPage /> },
   // { path: '',  element: <HomePage /> },
 ]);
 

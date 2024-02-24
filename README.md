@@ -3,9 +3,9 @@
 ## commands
 
 - install: yarn
-- build:   yarn build
-- run:     yarn dev
-- format:  yarn format
+- build: yarn build
+- run: yarn dev
+- format: yarn format
 
 ## setup
 
