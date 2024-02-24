@@ -4,23 +4,24 @@ export default function HomePage() {
   return (
     <main>
       <section className="quiz-grid">
-        <Link to={'/muscles'}>to muscles</Link>
-        <img
-          src={'./thumbnails/MuskelnThumbnail.png'}
-          alt="Muskeln"
-          width="400px"
-          height="800px"
-          onClick={() => console.log('click muscles')}
-        />
-        <Link to={'/muscles'}>to bones</Link>
-        <img
-          src={'./thumbnails/FemurThumbnail.png'}
-          alt="Muskeln"
-          width="400px"
-          height="800px"
-          onClick={() => console.log('click bones')}
-        />
-
+        <Link to={'/muscles'}>
+          <img
+            src={'./thumbnails/MuskelnThumbnail.png'}
+            alt="Muskeln"
+            width="400px"
+            height="800px"
+            onClick={() => console.log('click muscles')}
+          />
+        </Link>
+        <Link to={'/muscles'}>
+          <img
+            src={'./thumbnails/FemurThumbnail.png'}
+            alt="Muskeln"
+            width="400px"
+            height="800px"
+            onClick={() => console.log('click bones')}
+          />
+        </Link>
         <div className={'center'}>
           {/*    <h1>Advanced Anatomy</h1>*/}
 
