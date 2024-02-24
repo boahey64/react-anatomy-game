@@ -2,8 +2,10 @@
 
 ## commands
 
-- npm install vs. yarn
-- npm run dev vs. yarn dev
+- install: yarn
+- build:   yarn build
+- run:     yarn dev
+- format:  yarn format
 
 ## setup
 
