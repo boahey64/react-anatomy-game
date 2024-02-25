@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ImageLink from '../components/ImageLink.jsx';
+import Header from '../components/header/Header.jsx';
 
 const ControlContainer = styled.div`
   display: flex;
@@ -14,6 +14,7 @@ const ControlContainer = styled.div`
 export default function HomePage() {
   return (
     <main className={'center'}>
+      <Header />
       <h1>Advanced Anatomy</h1>
       <ControlContainer>
         <ImageLink path={'/muscles'} img={'./thumbnails/MuskelnThumbnail.png'} alt={'Muskeln'} />
