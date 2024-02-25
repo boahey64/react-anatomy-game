@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import Header from '../components/header/Header.jsx';
 export default function BonesPage() {
   return (
     <>
       <p>
-        <Link to={'/'}>back</Link>
+        <Header />
       </p>
       <h1 className={'center'}>Knochen</h1>
     </>

@@ -4,6 +4,7 @@ import Player from '../components/ticTacToe/Player/Player.jsx';
 import GameOver from '../components/ticTacToe/GameOver.jsx';
 import GameBoard from '../components/ticTacToe/GameBoard/GameBoard.jsx';
 import Log from '../components/ticTacToe/Log.jsx';
+import Header from '../components/header/Header.jsx';
 
 const PLAYERS = { X: 'Player 1', O: 'Player 2' };
 
@@ -94,6 +95,7 @@ export default function TicTacToePage() {
   return (
     <>
       <main>
+        <Header />
         <div id={'game-container'}>
           <ol id="players" className={'highlight-player'}>
             <Player

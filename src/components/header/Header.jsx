@@ -1,22 +1,31 @@
-import reactImg from '../../assets/react-core-concepts.png'
 import './Header.css'
+import styled from 'styled-components';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core']
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1))
-}
+const HeaderContainer = styled.header`
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-left: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+`;
 
 export default function Header() {
-  const description = reactDescriptions[genRandomInt(2)]
+  const [searchValue, setSearchValue] = useState('Suche');
+
+  function handleChange(event) {
+    setSearchValue(event.target.value);
+    console.log('handleChange: ', searchValue);
+  }
+
   return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
+    <HeaderContainer>
+      <div><p><Link to={'/'}>Advanced Anatomy</Link></p></div>
+      <div><p>Menü</p></div>
+      <div><p><input type={'text'} value={searchValue} onChange={handleChange}></input></p></div>
+      <div><p>Change Language</p></div>
+    </HeaderContainer>
   )
 }
