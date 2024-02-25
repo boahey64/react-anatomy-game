@@ -118,7 +118,6 @@ export default function TicTacToePage() {
         </div>
         <Log turns={gameTurns} />
       </main>
-      {/*<ReviewInput />*/}
     </>
   );
 }
