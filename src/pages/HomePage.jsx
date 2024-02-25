@@ -18,6 +18,7 @@ export default function HomePage() {
       <ControlContainer>
         <ImageLink path={'/muscles'} img={'./thumbnails/MuskelnThumbnail.png'} alt={'Muskeln'} />
         <ImageLink path={'/bones'} img={'./thumbnails/FemurThumbnail.png'} alt={'Knochen'} />
+        <ImageLink path={'/tictactoe'} img={'./game/game-logo.png'} alt={'TicTacToe'} />
       </ControlContainer>
     </main>
   );
