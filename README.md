@@ -1,9 +1,11 @@
-# 07-tic-tac-toe-starting-project
+# react-anatomy-game
 
 ## commands
 
-- npm install vs. yarn
-- npm run dev vs. yarn dev
+- install: yarn
+- build: yarn build
+- run: yarn dev
+- format: yarn format
 
 ## setup
 
@@ -17,3 +19,7 @@ https://www.robinwieruch.de/vite-eslint/
 - yarn add -D vite-plugin-eslint
 - yarn add -D eslint-config-react-app
 - yarn add -D @babel/eslint-parser
+
+## original url
+
+- https://advancedanatomy.org/AdvAna.php

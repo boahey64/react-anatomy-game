@@ -290,6 +290,10 @@ ol {
   margin-top: 1.5rem;
 }
 
+.center {
+  text-align: center;
+}
+
 @keyframes slide-in-from-left {
   0% {
     opacity: 0;
