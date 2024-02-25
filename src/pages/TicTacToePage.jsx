@@ -1,9 +1,9 @@
 import { WINNING_COMBINATIONS } from '../winning-combinations.js';
 import { useRef, useState } from 'react';
-import Player from '../components/Player/Player.jsx';
-import GameOver from '../components/GameOver.jsx';
-import GameBoard from '../components/GameBoard/GameBoard.jsx';
-import Log from '../components/Log.jsx';
+import Player from '../components/ticTacToe/Player/Player.jsx';
+import GameOver from '../components/ticTacToe/GameOver.jsx';
+import GameBoard from '../components/ticTacToe/GameBoard/GameBoard.jsx';
+import Log from '../components/ticTacToe/Log.jsx';
 
 const PLAYERS = { X: 'Player 1', O: 'Player 2' };
 
