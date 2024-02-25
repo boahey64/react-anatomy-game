@@ -1,4 +1,4 @@
-# 07-tic-tac-toe-starting-project
+# react-anatomy-game
 
 ## commands
 
@@ -19,3 +19,6 @@ https://www.robinwieruch.de/vite-eslint/
 - yarn add -D vite-plugin-eslint
 - yarn add -D eslint-config-react-app
 - yarn add -D @babel/eslint-parser
+
+## original url
+* https://advancedanatomy.org/AdvAna.php
