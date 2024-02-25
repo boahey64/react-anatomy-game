@@ -14,7 +14,6 @@ export default function HomePage() {
   return (
     <main className={'center'}>
       <h1>Advanced Anatomy</h1>
-      {/*<section className="quiz-grid">*/}
       <ControlContainer>
         <Link to={'/muscles'}>
           <img
@@ -35,7 +34,6 @@ export default function HomePage() {
           />
         </Link>
       </ControlContainer>
-      {/*</section>*/}
     </main>
   );
 }
